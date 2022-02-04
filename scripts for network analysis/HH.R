@@ -13,12 +13,12 @@ test$microbe1<-ifelse(test$microbe1=="k__Bacteria;__;__;__;__", "unknown bacteri
 
 test$microbe2<-ifelse(test$microbe2=="k__Bacteria;__;__;__;__", "unknown bacteria a", test$microbe2)
 
-test$microbe1<-ifelse(test$microbe1=="k__Bacteria;p__Spirochaetes;c__Spirochaetes;__;__","Class Spirochaetes  " ,test$microbe1)
+test$microbe1<-ifelse(test$microbe1=="k__Bacteria;p__Spirochaetes;c__Spirochaetes;__;__","Class Spirochaetes" ,test$microbe1)
 
-test$microbe2<-ifelse(test$microbe2=="k__Bacteria;p__Spirochaetes;c__Spirochaetes;__;__","Class Spirochaetes  " ,test$microbe2)
+test$microbe2<-ifelse(test$microbe2=="k__Bacteria;p__Spirochaetes;c__Spirochaetes;__;__","Class Spirochaetes" ,test$microbe2)
 
-test$microbe1<-ifelse(test$microbe1=="k__Bacteria;p__Spirochaetes;c__Spirochaetes;o__;f__","Class Spirochaetes " ,test$microbe1)
-test$microbe2<-ifelse(test$microbe2=="k__Bacteria;p__Spirochaetes;c__Spirochaetes;o__;f__","Class Spirochaetes " ,test$microbe2)
+test$microbe1<-ifelse(test$microbe1=="k__Bacteria;p__Spirochaetes;c__Spirochaetes;o__;f__","Class Spirochaetes" ,test$microbe1)
+test$microbe2<-ifelse(test$microbe2=="k__Bacteria;p__Spirochaetes;c__Spirochaetes;o__;f__","Class Spirochaetes" ,test$microbe2)
 #bacteriodales
 test$microbe1<-ifelse(test$microbe1=="k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__","Order Bacteriodales " ,test$microbe1)
 test$microbe2<-ifelse(test$microbe2=="k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__","Order Bacteriodales " ,test$microbe2)
