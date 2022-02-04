@@ -1,6 +1,6 @@
 library(igraph)
 library(dplyr)
-test<-read.csv("SS5.csv")
+test<-read.csv("HH5.csv")
 test$microbe1<-sub(".*f__", "", test$feature1) 
 test$microbe2<-sub(".*f__", "", test$feature2)
 test$microbe1<-ifelse(test$microbe1=="", test$feature1,test$microbe1)
@@ -12,7 +12,7 @@ test_r<-subset(test, r > 0.5 | r < (-0.5), select=3:5)
 #cleaned edge list
 #columns will be -1 and -2 from total number of variables, will change depending on how you filtered
 test_edge<-test_r[c(2:3)]
-#manually chose the rows to keep by p value- will work once pariwise comparisons
+#manually chose the rows to keep by p value- will work once pairwise comparisons
 #test_top<-test_edge[r(x:y)]
 #separate one with missing data values if you want
 #test_NA<-test
