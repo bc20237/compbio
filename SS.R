@@ -1,21 +1,16 @@
 library(igraph)
 library(dplyr)
-new<-read.csv("SS5.csv") #change to all!!
-da<-read.csv("resSHtoSS.csv")
+test<-read.csv("SS5.csv")
 #get just differentially abundant ones
 #make a new category if they are diff abundant (=1) or not (=0)
-only_da<-da[which(da$site.animal.healthSS.5=="TRUE"),]
-new$diffab1<-ifelse(new$feature1 %in% only_da$X, 1, 0)
-new$diffab2<-ifelse(new$feature2 %in% only_da$X, 1, 0)
-#only contains diff ab
-test<-new[which(new$diffab1=='1'& new$diffab2=='1'),]
 test$microbe1<-sub(".*f__", "", test$feature1) 
 test$microbe2<-sub(".*f__", "", test$feature2)
 test$microbe1<-ifelse(test$microbe1=="", test$feature1,test$microbe1)
 test$microbe2<-ifelse(test$microbe2=="", test$feature2,test$microbe2)
-test<-subset(test, r >= 0.5 | r <= (-0.5), select=3:7)
+test<-subset(test, r >= 0.5 | r <= (-0.5), select=3:5)
 #data cleaning specific cases bc of the fucky classifier
 test$microbe1<-ifelse(test$microbe1=="k__Bacteria;__;__;__;__", "unknown bacteria a", test$microbe1)
+
 test$microbe2<-ifelse(test$microbe2=="k__Bacteria;__;__;__;__", "unknown bacteria a", test$microbe2)
 
 test$microbe1<-ifelse(test$microbe1=="k__Bacteria;p__Spirochaetes;c__Spirochaetes;__;__","Class Spirochaetes" ,test$microbe1)
@@ -74,11 +69,9 @@ test$microbe2<-ifelse(test$microbe2=="k__Bacteria;p__Proteobacteria;c__Deltaprot
 test$microbe1<-ifelse(test$microbe1=="k__Bacteria;p__Bacteroidetes;c__BME43;o__;f__","class BME43", test$microbe1)
 test$microbe2<-ifelse(test$microbe2=="k__Bacteria;p__Bacteroidetes;c__BME43;o__;f__","class BME43",test$microbe2)
 
-#to filter by r value, optional
-#test_r<-subset(test, r > 0.5 | r < (-0.5), select=4:6)
 #cleaned edge list
 #columns will be -1 and -2 from total number of variables, will change depending on how you filtered
-test_edge<-test[c(4:5)]
+test_edge<-test[c(2:3)]
 test_graph<-graph.data.frame(test_edge, directed = FALSE)
 
 plot(test_graph)
@@ -123,6 +116,6 @@ test_graph_simple<-simplify(
 plot(test_graph_simple, vertex.color=colrs[V(test_graph)$community],edge.label=test$r)
 #edge.label=test$r
 clp<-cluster_label_prop(test_graph_simple)
-plot(clp,test_graph_simple,vertex.color=colrs[V(test_graph)$community],edge.label=test$r, main="Differentially abundant between exposed and symptomic, |r|>=0.5")
+plot(clp,test_graph_simple,vertex.color=colrs[V(test_graph)$community],edge.label=test$r,main="Symptomatic, |r|>=0.5")
 
 
