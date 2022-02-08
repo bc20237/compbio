@@ -1,6 +1,6 @@
 library(igraph)
 library(dplyr)
-new<-read.csv("SS5.csv") #change to all!!
+new<-read.csv("all.csv") 
 da<-read.csv("resSHtoSS.csv")
 #get just differentially abundant ones
 #make a new category if they are diff abundant (=1) or not (=0)
@@ -123,6 +123,6 @@ test_graph_simple<-simplify(
 plot(test_graph_simple, vertex.color=colrs[V(test_graph)$community],edge.label=test$r)
 #edge.label=test$r
 clp<-cluster_label_prop(test_graph_simple)
-plot(clp,test_graph_simple,vertex.color=colrs[V(test_graph)$community],edge.label=test$r, main="Differentially abundant between exposed and symptomic, |r|>=0.5")
+plot(clp,test_graph_simple,vertex.color=colrs[V(test_graph)$community],edge.label=test$r, main="Differentially abundant between exposed and symptomatic, |r|>=0.5")
 
 
