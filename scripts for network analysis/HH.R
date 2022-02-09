@@ -1,5 +1,7 @@
 library(igraph)
 library(dplyr)
+library(ggplot2)
+library(gt)
 test<-read.csv("HH5.csv")
 #get just differentially abundant ones
 #make a new category if they are diff abundant (=1) or not (=0)
@@ -98,8 +100,21 @@ class(ceb)
 #amount of communities
 length(ceb)
 #who is in each
-membership(ceb)
-# measurement, high modularity= density within community, less connected xc communities
+
+
+commtab<-as.data.frame(ceb$membership,ceb$names)
+commtab['names'] <- ceb$names
+commtab['community']<-ceb$membership
+commtab=commtab[c("names","community")]
+gtable<-commtab %>% 
+  group_by(community) %>% 
+  summarize(names)
+
+#make a variable that contains which microbes are in each community
+
+gtable2<-gt(gtable,rownames_to_stub = FALSE)
+
+#measurement, high modularity= density within community, less connected xc communities
 modularity(ceb)
 #add variable telling which community theyre in, makes graphing that easier
 #cfg<-cluster_optimal(test_graph)

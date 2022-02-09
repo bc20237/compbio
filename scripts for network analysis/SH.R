@@ -104,6 +104,19 @@ modularity(ceb)
 #add variable telling which community theyre in, makes graphing that easier
 #cfg<-cluster_optimal(test_graph)
 #plot(cfg, test_graph)
+
+commtab<-as.data.frame(ceb$membership,ceb$names)
+commtab['names'] <- ceb$names
+commtab['community']<-ceb$membership
+commtab=commtab[c("names","community")]
+gtable<-commtab %>% 
+  group_by(community) %>% 
+  summarize(names)
+
+#make a variable that contains which microbes are in each community
+
+gtable2<-gt(gtable,rownames_to_stub = FALSE)
+gtable2
 V(test_graph)$community <- ceb$membership
 #would need as many colors as communities
 colrs <- adjustcolor( c("blue violet","coral","cyan", "tomato", "gold", "yellowgreen", "darkorange","firebrick","darkseagreen","dodgerblue","deeppink","darkslategray4","lavenderblush3","lightblue1","mediumpurple4","mediumspringgreen", "navajowhite","maroon","olivedrab3","saddlebrown","royalblue1", "seagreen1","tan1","snow2","wheat3", "turquoise2","palegoldenrod","red2","seagreen","gray50"), alpha=.6)
