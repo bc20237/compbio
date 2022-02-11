@@ -1,5 +1,6 @@
 library(igraph)
 library(dplyr)
+library(gt)
 test<-read.csv("SH5.csv")
 #get just differentially abundant ones
 #make a new category if they are diff abundant (=1) or not (=0)
