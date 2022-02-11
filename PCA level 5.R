@@ -9,17 +9,16 @@ library(githubinstall)
 library(tidyverse)
 library(ggplot2)
 library(ggbiplot)
-#changed the name to something shorter albeit less descriptive
+
 tl5<-taxlevel5
 require(plyr)
 
-print(names(tl5[,c(2:53)]))
-tl5.pca<-prcomp(tl5[,c(2:53)], center=TRUE, scale.=TRUE)
+print(names(tl5[,c(2:27)]))
+tl5.pca<-prcomp(tl5[,c(2:27)], center=TRUE, scale.=TRUE)
 #look at the table output
 summary(tl5.pca)
 str(tl5.pca)
-#plot the PCAs, by health status site and site/health status just to check it out
-#health status
+colrs <- adjustcolor( c("green","blue","red"), alpha=.6)
 pcaPlot<-(ggbiplot(tl5.pca, obs.scale = 1, var.scale = 1, 
          groups=tl5[,321],
    ellipse = TRUE) + 
