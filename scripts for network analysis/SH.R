@@ -130,6 +130,6 @@ test_graph_simple<-simplify(
 plot(test_graph_simple, vertex.color=colrs[V(test_graph)$community],edge.label=test$r)
 #edge.label=test$r
 clp<-cluster_label_prop(test_graph_simple)
-plot(clp,test_graph_simple,vertex.color=colrs[V(test_graph)$community],edge.label=test$r,main="Exposed, |r|>=0.5")
+SH<-plot(clp,test_graph_simple,vertex.color=colrs[V(test_graph)$community],edge.label=test$r,main="B")
 
 

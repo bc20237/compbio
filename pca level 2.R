@@ -30,7 +30,7 @@ x<-rep(sum(tl2[,2:42]))
 
 #pca for the proportional abundance of top 10 groups
 
-tl2.pca<-prcomp(tl2[,c(2:35)], center=TRUE, scale.=TRUE)
+tl2.pca<-prcomp(tl2[,c(2:12)], center=TRUE, scale.=TRUE)
 #look at the table output
 summary(tl2.pca)
 str(tl2.pca)
