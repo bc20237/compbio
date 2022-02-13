@@ -25,6 +25,6 @@ pcaPlot<-(ggbiplot(tl5.pca, obs.scale = 2, var.scale = 2,
    ellipse = TRUE) + 
      
   scale_color_discrete(name = '') +
-  theme(legend.direction = 'horizontal', legend.position = 'top')) + ggtitle('Principal Component Analysis, \n family level') + theme(plot.title = element_text(size=20))+ theme(axis.title.x = element_text(size=20)) + theme(axis.title.y = element_text(size=20))
+  theme(legend.direction = 'horizontal', legend.position = 'top')) + ggtitle('Principal Coordinate Analysis, \n family level') + theme(plot.title = element_text(size=20))+ theme(axis.title.x = element_text(size=20)) + theme(axis.title.y = element_text(size=20))
 pcaPlot
 
