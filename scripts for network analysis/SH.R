@@ -130,6 +130,7 @@ test_graph_simple<-simplify(
 plot(test_graph_simple, vertex.color=colrs[V(test_graph)$community],edge.label=test$r)
 #edge.label=test$r
 clp<-cluster_label_prop(test_graph_simple)
-SH<-plot(clp,test_graph_simple,vertex.color=colrs[V(test_graph)$community],edge.label=test$r,main="B")
+node.size= c(10,10,10)
+plot(clp,test_graph_simple,vertex.size=3,vertex.label.cex=1,vertex.color=colrs[V(test_graph)$community],vertex.label.degree=0,edge.label=test$r,edge.widths=test_graph$r,main="B")
 
 
