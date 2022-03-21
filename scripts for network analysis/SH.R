@@ -8,7 +8,7 @@ test$microbe1<-sub(".*f__", "", test$feature1)
 test$microbe2<-sub(".*f__", "", test$feature2)
 test$microbe1<-ifelse(test$microbe1=="", test$feature1,test$microbe1)
 test$microbe2<-ifelse(test$microbe2=="", test$feature2,test$microbe2)
-test<-subset(test, r >= 0.5 | r <= (-0.5), select=3:5)
+test<-subset(test, r >= 0.3 | r <= (-0.3), select=3:5)
 #data cleaning specific cases bc of the fucky classifier
 test$microbe1<-ifelse(test$microbe1=="k__Bacteria;__;__;__;__", "unknown bacteria a", test$microbe1)
 
